@@ -92,7 +92,7 @@ export default function Dashboard() {
   return (
     <div className="page-container">
       <div className="page-header">
-        <h1 className="page-title">Welcome, {user?.name} 👋</h1>
+        <h1 className="page-title">Welcome back 👋</h1>
         <p className="page-subtitle">Your ScoreWin dashboard — track scores, view winnings, and make an impact.</p>
       </div>
 

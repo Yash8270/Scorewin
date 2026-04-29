@@ -17,8 +17,9 @@ export default function Navbar() {
   };
 
   const isActive = (path) => location.pathname === path;
+  const isAdminView = location.pathname.startsWith('/admin');
 
-  const navLinks = user ? [
+  const navLinks = (user && !isAdminView) ? [
     { to: '/dashboard', label: 'Dashboard', icon: <FiHome /> },
     { to: '/scores', label: 'Scores', icon: <FiTarget /> },
     { to: '/charities', label: 'Charities', icon: <FiHeart /> },
@@ -46,14 +47,25 @@ export default function Navbar() {
             </Link>
           ))}
 
-          {isAdmin && (
+          {isAdmin && isAdminView && (
+            <Link
+              to="/dashboard"
+              className="nav-link admin-link"
+              onClick={() => setMobileOpen(false)}
+            >
+              <FiUser />
+              <span>Switch to User View</span>
+            </Link>
+          )}
+
+          {isAdmin && !isAdminView && (
             <Link
               to="/admin"
-              className={`nav-link admin-link ${location.pathname.startsWith('/admin') ? 'active' : ''}`}
+              className="nav-link admin-link"
               onClick={() => setMobileOpen(false)}
             >
               <FiShield />
-              <span>Admin</span>
+              <span>Back to Admin Panel</span>
             </Link>
           )}
 
