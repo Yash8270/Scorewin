@@ -1,0 +1,103 @@
+.draws-list { display: flex; flex-direction: column; gap: var(--space-4); }
+
+.draw-item {
+  padding: var(--space-5);
+  cursor: pointer;
+  transition: all var(--transition-base);
+}
+.draw-item:hover { transform: translateY(-2px); box-shadow: var(--shadow-lg); }
+
+.draw-item-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: var(--space-4);
+}
+
+.draw-month {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-weight: 700;
+  font-size: var(--font-lg);
+}
+
+.draw-numbers {
+  display: flex;
+  gap: var(--space-2);
+  flex-wrap: wrap;
+  margin-bottom: var(--space-4);
+}
+
+.draw-number-ball {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--emerald-500), var(--emerald-600));
+  color: white;
+  font-weight: 800;
+  font-size: var(--font-base);
+  box-shadow: var(--shadow-emerald);
+}
+
+.draw-number-ball.large {
+  width: 56px;
+  height: 56px;
+  font-size: var(--font-lg);
+}
+
+.draw-meta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: var(--font-sm);
+  color: var(--text-secondary);
+}
+
+.draw-view-link {
+  color: var(--emerald-400);
+  font-weight: 600;
+  font-size: var(--font-xs);
+}
+
+.draw-detail {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-6);
+}
+
+.draw-detail-stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-4);
+  text-align: center;
+}
+
+.detail-label {
+  display: block;
+  font-size: var(--font-xs);
+  color: var(--text-muted);
+  text-transform: uppercase;
+  margin-bottom: var(--space-1);
+}
+
+.detail-value {
+  display: block;
+  font-size: var(--font-lg);
+  font-weight: 700;
+}
+
+.draw-winners-list { display: flex; flex-direction: column; gap: var(--space-3); }
+.draw-winners-list h4 { font-weight: 700; margin-bottom: var(--space-2); }
+
+.draw-winner-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--space-3);
+  border-radius: var(--radius-sm);
+  background: rgba(255, 255, 255, 0.02);
+}
