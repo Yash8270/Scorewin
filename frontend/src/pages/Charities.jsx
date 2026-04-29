@@ -69,6 +69,10 @@ export default function Charities() {
         <p className="page-subtitle">A minimum of 10% of your subscription supports the charity you choose. You can increase your contribution anytime.</p>
       </div>
 
+      <div style={{ backgroundColor: 'rgba(59, 130, 246, 0.1)', border: '1px solid var(--info-color)', color: 'var(--info-color)', padding: '1rem', borderRadius: 'var(--radius-md)', marginBottom: '2rem', display: 'flex', alignItems: 'center', gap: '0.5rem', fontWeight: '500' }}>
+        <FiCheck /> You are contributing at least 10% of your subscription to charity
+      </div>
+
       {myCharity && (
         <div className="my-charity-card glass-card animate-fade-in">
           <div className="my-charity-header">
@@ -81,8 +85,8 @@ export default function Charities() {
           <div className="my-charity-pct">
             <label className="input-label">Contribution %</label>
             <div className="pct-control">
-              <input type="range" min="10" max="50" step="1" value={percentage} onChange={e => setPercentage(Number(e.target.value))} className="pct-slider" />
-              <input type="number" min="10" max="50" value={percentage} onChange={e => setPercentage(Number(e.target.value))} className="pct-input" />
+              <input type="range" min="10" max="100" step="1" value={percentage} onChange={e => setPercentage(Number(e.target.value))} className="pct-slider" />
+              <input type="number" min="10" max="100" value={percentage} onChange={e => setPercentage(Number(e.target.value))} className="pct-input" />
               <span className="pct-value">{percentage}%</span>
               <button className="btn btn-primary btn-sm" onClick={handlePercentageUpdate}>Update</button>
             </div>

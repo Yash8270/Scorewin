@@ -2,6 +2,8 @@ from sqlalchemy.orm import Session
 from fastapi import HTTPException, status
 from datetime import datetime, timedelta, timezone
 from app.models.subscription import Subscription, SubscriptionStatus, PlanType
+from app.models.charity import Charity
+from app.models.user_charity import UserCharity
 from app.config.settings import settings
 
 
@@ -45,6 +47,19 @@ def create_subscription(db: Session, user_id: int, plan: str) -> Subscription:
         end_date=end_date
     )
     db.add(subscription)
+
+    # Enforce mandatory charity selection
+    user_charity = db.query(UserCharity).filter(UserCharity.user_id == user_id).first()
+    if not user_charity:
+        default_charity = db.query(Charity).first()
+        if default_charity:
+            new_uc = UserCharity(
+                user_id=user_id,
+                charity_id=default_charity.id,
+                percentage=10.0
+            )
+            db.add(new_uc)
+
     db.commit()
     db.refresh(subscription)
     return subscription
